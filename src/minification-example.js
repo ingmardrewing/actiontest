@@ -5,5 +5,6 @@ class MinifiMe {
   
   shrink() {
     console.log("Oh, my ...");
+    alert("Hello World");
   }
 }
