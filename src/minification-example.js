@@ -1,10 +1,12 @@
-class MinifiMe {
+class MinifyMe {
   constructor(miniMe) {
-    this.miniMe = miniMe;
+    this.name = miniMe;
   }
   
-  shrink() {
-    console.log("Oh, my ...");
-    alert("Hello World");
+  greet() {
+    alert(`Hello, I am ${this.name}!!`);
   }
 }
+
+let mm = new Minify("minfied");
+mm.greet();
