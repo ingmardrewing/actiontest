@@ -1,4 +1,6 @@
-let canvasWidth = 400, canvasHeight = 400, shape;
+let canvasWidth = 400;
+let canvasHeight = 400;
+let shape;
 
 function setup() {
   createCanvas(canvasWidth, canvasHeight);
@@ -26,7 +28,9 @@ class Shape{
   constructor () {
     this.shapes = [
       new Rectangle(70, 70) ,
-      new Ellipse(50, 100)
+      new Ellipse(50, 100),
+      new Rectangle(70, 10) ,
+      new Circle(70)
     ]
     this.shapeIndex = 0
   }
@@ -34,22 +38,31 @@ class Shape{
   
   draw(x,y){
       fill(this.r, this.g, this.b)
-      this.shapes[this.shapeIndex].draw(x, y)
+      const currentShape = this.shapes[this.shapeIndex]
+      currentShape.draw(x, y)
   }
   
   changeShape(){
-    this.shapeIndex = this.shapeIndex == this.shapes.length - 1 ?  0 
-                    : this.shapeIndex + 1;
+    if (this.shapeIndex == this.shapes.length - 1) {
+      this.shapeIndex = 0
+    } 
+    else {
+      this.shapeIndex++      
+    }
+    
+    // Ternäre Variante:
+    // this.shapeIndex = <boolscher Ausdruck> ? <ist wahr> : <ist falsch>
   }
   
   changeColor() {
+    // Math.random() -> liefert Fließkommazahl zwischen 0 und 1
+    // Math.floor() -> entfernt den Nachkommateil
     this.r = Math.floor(255 * Math.random())
     this.g = Math.floor(255 * Math.random())
     this.b = Math.floor(255 * Math.random())
   }
 
 } 
-
 
 class Rectangle {
   constructor(w, h) {
@@ -58,9 +71,10 @@ class Rectangle {
   }
   
   draw(x, y) {
-    rect(x - 50, y - 50, 100, 100)
+    rect(x - this.w/2, y - this.h/2, this.w, this.h)
   }
 }
+
 
 class Ellipse {
   constructor (h, w) {
@@ -70,5 +84,12 @@ class Ellipse {
   
   draw(x, y) {
     ellipse(x - this.w/2, y - this.h/2, this.w, this.h)
+  }
+}
+
+
+class Circle extends Ellipse {
+  constructor(d) {
+    super(d, d)
   }
 }
