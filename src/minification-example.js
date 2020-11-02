@@ -10,3 +10,13 @@ class MinifyMe {
 
 let mm = new Minify("minfied");
 mm.greet();
+
+class Irgendwas {
+  constructor(test){
+    this.test = test
+  }
+
+  execute() {
+   console.log("Hello World")
+  }
+}
