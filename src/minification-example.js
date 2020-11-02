@@ -20,3 +20,6 @@ class Irgendwas {
    console.log("Hello World")
   }
 }
+
+mm.greet();
+// das hier ist eine Änderung, die erst nach dem Pull in meinem lokalen Verzeichnis auf dem Rechner landen sollte
