@@ -10,3 +10,4 @@ class MinifyMe {
 
 let mm = new Minify("minfied");
 mm.greet();
+mm.greet();
