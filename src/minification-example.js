@@ -11,3 +11,4 @@ class MinifyMe {
 let mm = new Minify("minfied");
 mm.greet();
 mm.greet();
+// das hier ist eine Änderung, die erst nach dem Pull in meinem lokalen Verzeichnis auf dem Rechner landen sollte
