@@ -1,0 +1,1 @@
+(()=>{class e{constructor(e){this.name=e}greet(){alert(`Hello, I am ${this.name}!!`)}}let t=new e("one"),n=new e("two");t.greet(),n.greet()})();
