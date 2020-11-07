@@ -17,7 +17,7 @@ jobs:
     - name: Install dependencies and run webpack
       run: |
         npm install --silent
-        npm run build:production
+        npm run build
 
 # Auto commits dist files to the repository
 # Ignore it if you don't want to commit the files to the repository 
