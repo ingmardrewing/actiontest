@@ -1,17 +1,13 @@
-class MinifyMe {
-  constructor(miniMe) {
-    this.name = miniMe;
+import p5 from 'p5';
+
+const sketch = (s) => {
+  s.setup = () => {
   }
-  
-  greet() {
-    alert(`Hello, I am ${this.name}!!`);
+
+  s.draw = () => {
+    s.backgroun(0);
+    s.circle(10, 10, 10);
   }
 }
 
-let a = new MinifyMe("one");
-let b = new MinifyMe("two");
-let c = new MinifyMe("three");
-
-a.greet();
-b.greet();
-c.greet();
+const sketchInstance = new P5(sketch);
