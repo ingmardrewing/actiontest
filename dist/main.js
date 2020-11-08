@@ -1,1 +1,1 @@
-(()=>{class e{constructor(e){this.name=e}greet(){alert(`Hello, I am ${this.name}!!`)}}let t=new e("one"),n=new e("two");t.greet(),n.greet()})();
+(()=>{class e{constructor(e){this.name=e}greet(){alert(`Hello, I am ${this.name}!!`)}}let t=new e("one"),r=new e("two"),n=new e("three");t.greet(),r.greet(),n.greet()})();

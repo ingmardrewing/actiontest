@@ -10,6 +10,8 @@ class MinifyMe {
 
 let a = new MinifyMe("one");
 let b = new MinifyMe("two");
+let c = new MinifyMe("three");
 
 a.greet();
 b.greet();
+c.greet();
