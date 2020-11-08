@@ -1,13 +1,7 @@
 import p5 from 'p5';
 
-const sketch = (s) => {
-  s.setup = () => {
-  }
 
-  s.draw = () => {
-    s.backgroun(0);
-    s.circle(10, 10, 10);
-  }
-}
+import sketch from './sketch';
 
-const sketchInstance = new P5(sketch);
+new p5(sketch);
+
