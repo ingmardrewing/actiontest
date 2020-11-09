@@ -15,8 +15,7 @@ export default function sketch(s) {
   s.draw = () => {
     s.background(backgroundColor);
     s.fill(s.color(255, 0, 0));
-    s.ellipse(x, y, 100, 100);
-    s.ellipse(x, y +50, 100, 100);
+    s.ellipse(x, y, 200, 100);
 
     x = (x + 1) % width;
   };
