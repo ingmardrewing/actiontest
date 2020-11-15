@@ -1,4 +1,4 @@
-import DataPoint from './dataPoint.js'
+import DataPoint from './dataPoint'
 
 export class Visualizer {
   constructor(dataPoints, amount, sketch) {

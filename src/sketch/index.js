@@ -1,4 +1,4 @@
-
+import Visualizer from './visualizer'
 
 export default function sketch(s) {
 
