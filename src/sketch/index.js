@@ -1,5 +1,3 @@
-import Visualizer from './visualizer.js'
-
 export default function sketch(s) {
 
   // Data Source: https://data.europa.eu/euodp/de/data/dataset/covid-19-coronavirus-data

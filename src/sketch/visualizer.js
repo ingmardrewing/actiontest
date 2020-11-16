@@ -1,5 +1,3 @@
-import DataPoint from './dataPoint.js'
-
 export class Visualizer {
   constructor(dataPoints, amount, sketch) {
     this.maxCases = 0;
