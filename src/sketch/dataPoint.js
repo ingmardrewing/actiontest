@@ -1,9 +1,10 @@
-export class DataPoint {
-  constructor(date, cases, visualizer) {
+export default class DataPoint {
+  constructor(date, cases, width, maxHeight, visualizer) {
+    this._maxCases = 10
     this._date = date
     this._cases = cases
-    this._maxCases = 10
-    this._maxHeight = 80
+    this._maxHeight = maxHeight
+    this._width = width
     this._visualizer = visualizer
     this.sketch = visualizer.sketch
   }
@@ -22,16 +23,9 @@ export class DataPoint {
 
   draw() {
     this.sketch.push()
-    this.sketch.translate(0, this.height / 2, 0)
-    this.sketch.rotateY(20);
-    this.sketch.box(10, this.height, 10);
+	    this.sketch.translate(0, this.height / 2, 0)
+	    this.sketch.rotateY(this.sketch.frameCount * 0.01);
+	    this.sketch.box(this._width, this.height, this._width);
     this.sketch.pop()
-    
-    /*
-    push()
-    translate(-5, 0, 0)
-    text('p5.js', 0, 0);
-    pop()
-    */
   }
 }

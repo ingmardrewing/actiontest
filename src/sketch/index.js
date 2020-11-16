@@ -1,66 +1,4 @@
-class Visualizer {
-  constructor(dataPoints, amount, sketch) {
-    this.maxCases = 0;
-    this.sketch = sketch;
-    
-    const padZeroes = (numberAsString) => {
-     return numberAsString.length === 1 ? "0" + numberAsString : numberAsString
-    }
-    
-    this.data = dataPoints.slice(-amount).map((d) => {
-      const fields = d.split(",")
-      const cases = parseInt(fields[4])
-      this.maxCases = cases > this.maxCases ? cases : this.maxCases
-      const dateAsString = `${fields[3]}-${padZeroes(fields[2])}-${padZeroes(fields[1])}`
-      return new DataPoint(dateAsString, cases, this)
-    })
-  }
-
-  draw() {
-    this.sketch.background(220);
-    this.sketch.normalMaterial();
-    this.sketch.stroke(255)
-    this.sketch.strokeWeight(0)
-    this.sketch.rotateX(-50)
-    
-    this.sketch.translate(-90, 0, 0)
-    this.data.forEach(d => {
-      d.draw()
-      this.sketch.translate(20, 0, 0)
-    })
-  }
-}
-
-class DataPoint {
-  constructor(date, cases, visualizer) {
-    this._date = date
-    this._cases = cases
-    this._maxCases = 10
-    this._maxHeight = 80
-    this._visualizer = visualizer
-    this.sketch = visualizer.sketch
-  }
-
-  get cases() {
-    return this._cases
-  }
-
-  get date() {
-    return this._date
-  }
-
-  get height() {
-    return Math.floor((this._cases / this._visualizer.maxCases) * this._maxHeight)
-  }
-
-  draw() {
-    this.sketch.push()
-    this.sketch.translate(0, this.height / 2, 0)
-    this.sketch.rotateY(20);
-    this.sketch.box(10, this.height, 10);
-    this.sketch.pop()
-  }
-}
+import Visualizer from './visualizer'
 
 export default function sketch(s) {
 
@@ -119,17 +57,16 @@ const data = [
   let visualizer, fnt;
   const width = 500;
   const height = 500;
-  
-  s.preload = () => {
-    //fnt = s.loadFont("assets/open-sans-v15-latin-ext_latin-300.ttf")
-  }
-
+ 
   s.setup = () => {
     s.createCanvas(width, height, s.WEBGL);
     s.ortho(-width / 2, width / 2, height / 2, -height / 2, 0, 500);
-    //s.textFont(fnt)
     
-    visualizer = new Visualizer(data, 10, s)
+    let dataWidth = 20
+    let gap = 30
+    let amountOfPoints = 15
+    let maxHeight = 200
+    visualizer = new Visualizer(data, amountOfPoints, dataWidth,  maxHeight, gap,  s)
   };
 
   s.draw = () => {
