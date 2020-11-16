@@ -1,4 +1,4 @@
-export class Visualizer {
+class Visualizer {
   constructor(dataPoints, amount, sketch) {
     this.maxCases = 0;
     this.sketch = sketch;

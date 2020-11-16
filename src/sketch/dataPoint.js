@@ -1,4 +1,4 @@
-export class DataPoint {
+class DataPoint {
   constructor(date, cases, visualizer) {
     this._date = date
     this._cases = cases
@@ -26,12 +26,5 @@ export class DataPoint {
     this.sketch.rotateY(20);
     this.sketch.box(10, this.height, 10);
     this.sketch.pop()
-    
-    /*
-    push()
-    translate(-5, 0, 0)
-    text('p5.js', 0, 0);
-    pop()
-    */
   }
 }
