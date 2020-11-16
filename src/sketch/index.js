@@ -128,6 +128,10 @@ const data = [
   let visualizer, fnt;
   const width = 500;
   const height = 500;
+  
+  s.preload = () => {
+    fnt = s.loadFont("assets/open-sans-v15-latin-ext_latin-300.ttf")
+  }
 
   s.setup = () => {
     s.createCanvas(width, height, s.WEBGL);
