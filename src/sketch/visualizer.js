@@ -37,7 +37,7 @@ export default class Visualizer {
     return year + "-" + month + "-" + dayOfMonth
   }
   
-  padZeroes = (numberAsString) => {
+  padZeroes (numberAsString) {
      return numberAsString.length === 1 ? "0" + numberAsString : numberAsString
   }
 
