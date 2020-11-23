@@ -26,7 +26,7 @@ export default class Visualizer {
     let tempMaxCases = 0
     this.data.forEach((d) => {
         tempMaxCases = d.cases > tempMaxCases ? d.cases : tempMaxCases
-    }
+    })
     return tempMaxCases
   }
   
