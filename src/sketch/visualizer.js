@@ -9,8 +9,8 @@ export default class Visualizer {
     this.gap = gap
     this.amount = amount
     
-    this.data = createDataPoints(dataPoints)
-    this.maxCases = findMaxCases()
+    this.data = this.createDataPoints(dataPoints)
+    this.maxCases = this.findMaxCases()
   }
   
   createDataPoints (dataPoints) {
