@@ -9,17 +9,36 @@ export default class Visualizer {
     this.gap = gap
     this.amount = amount
     
-    const padZeroes = (numberAsString) => {
-     return numberAsString.length === 1 ? "0" + numberAsString : numberAsString
-    }
-    
-    this.data = dataPoints.slice(-amount).map((d) => {
+    this.data = createDataPoints(dataPoints)
+    this.maxCases = findMaxCases()
+  }
+  
+  createDataPoints (dataPoints) {
+    return dataPoints.slice(-this.amount).map((d) => {
       const fields = d.split(",")
       const cases = parseInt(fields[4])
-      this.maxCases = cases > this.maxCases ? cases : this.maxCases
-      const dateAsString = `${fields[3]}-${padZeroes(fields[2])}-${padZeroes(fields[1])}`
+      const dateAsString = this.formatDate(fields)
       return new DataPoint(dateAsString, cases, this.dataWidth, this.maxHeight, this)
     })
+  }
+  
+  findMaxCases () {
+    let tempMaxCases = 0
+    this.data.forEach((d) => {
+        tempMaxCases = d.cases > tempMaxCases ? d.cases : tempMaxCases
+    }
+    return tempMaxCases
+  }
+  
+  formatDate (fields) {
+    const dayOfMonth = this.padZeroes(fields[1])
+    const month = this.padZeroes(fields[2])
+    const year = fields[3]
+    return year + "-" + month + "-" + dayOfMonth
+  }
+  
+  padZeroes = (numberAsString) => {
+     return numberAsString.length === 1 ? "0" + numberAsString : numberAsString
   }
 
   draw() {
