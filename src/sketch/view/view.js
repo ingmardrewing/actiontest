@@ -9,14 +9,14 @@ export default class View {
     const width = 500;
     const height = 500;
 
-    sketch.createCanvas(width, height, sketch.WEBGL);
-    sketch.ortho(-width / 2, width / 2, height / 2, -height / 2, 0, 500);
+    this.sketch.createCanvas(width, height, this.sketch.WEBGL);
+    this.sketch.ortho(-width / 2, width / 2, height / 2, -height / 2, 0, 500);
     
     let dataWidth = 20
     let gap = 30
     let amountOfPoints = 15
     let maxHeight = 200
-    let visualizer = new Visualizer(data, amountOfPoints, dataWidth,  maxHeight, gap,  sketch)
+    let visualizer = new Visualizer(data, amountOfPoints, dataWidth,  maxHeight, gap,  this.sketch)
 
     this.sketch.draw = () => {
       visualizer.draw()
