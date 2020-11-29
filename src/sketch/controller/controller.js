@@ -1,10 +1,14 @@
 export default class Controller {
   constructor (model) {
-    this.model = model
-    this.view = null
+    this._model = model
+    this._view = null
   }
 
   set view (view) {
-    this.view = view
+    this._view = view
+  }
+
+  dt () {
+    return 2
   }
 }
