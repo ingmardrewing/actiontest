@@ -1,7 +1,6 @@
 import View from './view/view'
 import Model from './model/model'
 import Controller from './controller/controller'
-import Visualizer from './visualizer'
 
 export default function sketch(s) {
 
