@@ -1,3 +1,6 @@
+import View from './view/view'
+import Model from './model/model'
+import Controller from './controller/controller'
 import Visualizer from './visualizer'
 
 export default function sketch(s) {
@@ -54,22 +57,15 @@ const data = [
   "01/10/2020,1,10,2020,2503,12,Germany,DE,DEU,83019213,Europe,31.15543868"
   ];
   
-  let visualizer, fnt;
-  const width = 500;
-  const height = 500;
+  let model, view, controller;
  
   s.setup = () => {
-    s.createCanvas(width, height, s.WEBGL);
-    s.ortho(-width / 2, width / 2, height / 2, -height / 2, 0, 500);
-    
-    let dataWidth = 20
-    let gap = 30
-    let amountOfPoints = 15
-    let maxHeight = 200
-    visualizer = new Visualizer(data, amountOfPoints, dataWidth,  maxHeight, gap,  s)
-  };
+    // MVC setup
+    model = new Model(data)
+    controller = new Controller(model)
+    view = new View(model, controller, s)
+    controller.view = view
 
-  s.draw = () => {
-    visualizer.draw()
+    view.init()
   };
 }
