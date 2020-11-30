@@ -1,3 +1,5 @@
+import Visualizer from './visualizer'
+
 export default class View {
   constructor(model,controller,sketch){
     this._model = model
