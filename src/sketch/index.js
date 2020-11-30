@@ -6,7 +6,7 @@ export default function sketch(s) {
   const height = 500;
 
   s.preload = () => {
-    teapot = s.loadModel('https://drewing.de/hsmz/actiontest/dist/assets/chair2.obj', true);
+    teapot = s.loadModel('./assets/chair2.obj', true);
   }
 
   s.setup = () => {
