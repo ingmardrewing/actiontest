@@ -65,6 +65,6 @@ const data = [
     view = new View(model, controller, s)
     controller.view = view
 
-    // view.init()
+    view.init()
   };
 }
