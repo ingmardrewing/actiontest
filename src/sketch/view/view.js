@@ -1,11 +1,13 @@
 import Visualizer from './visualizer'
 
 export default class View {
-  constructor(model,controller,sketch){
+  constructor(model,controller,sketch, data){
     this._model = model
     this._controller = controller
     this._sketch = sketch
+    this._data = data
   }
+
 
   init() {
     const width = 500;
@@ -18,7 +20,7 @@ export default class View {
     let gap = 30
     let amountOfPoints = 15
     let maxHeight = 200
-    let visualizer = new Visualizer(data, amountOfPoints, dataWidth,  maxHeight, gap,  this._sketch)
+    let visualizer = new Visualizer(this._data, amountOfPoints, dataWidth,  maxHeight, gap,  this._sketch)
 
     this._sketch.draw = () => {
       visualizer.draw()

@@ -62,7 +62,7 @@ const data = [
     // MVC setup
     model = new Model(data)
     controller = new Controller(model)
-    view = new View(model, controller, s)
+    view = new View(model, controller, s, data)
     controller.view = view
 
     view.init()
