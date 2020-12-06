@@ -1,29 +1,52 @@
 import Visualizer from './visualizer'
+import BarChart from './barchart'
 
 export default class View {
-  constructor(model,controller,sketch, data){
+  constructor(model,controller,sketch){
     this._model = model
     this._controller = controller
     this._sketch = sketch
-    this._data = data
   }
 
-
   init() {
-    const width = 500;
     const height = 500;
+    const width = 1000;
 
-    this._sketch.createCanvas(width, height, this._sketch.WEBGL);
-    this._sketch.ortho(-width / 2, width / 2, height / 2, -height / 2, 0, 500);
-    
-    let dataWidth = 20
-    let gap = 30
-    let amountOfPoints = 15
-    let maxHeight = 200
-    let visualizer = new Visualizer(this._data, amountOfPoints, dataWidth,  maxHeight, gap,  this._sketch)
+    const yGap = 10
+    const xGap = 20
+    const maxHeight = 80
+    let currentY = 20
+    let currentX = 20
+    let openSans
+    const view = this
 
-    this._sketch.draw = () => {
-      visualizer.draw()
+    this._sketch.preload = () => {
+      openSans = this._sketch.loadFont('assets/open-sans-v15-latin-ext_latin-300.ttf')
+    }
+
+    this._sketch.setup = () => {
+      this._sketch.createCanvas(width, height);
+      this._sketch.background(204)
+      this._sketch.strokeWeight(0)
+
+      this._sketch.textFont(openSans)
+      this._sketch.textSize(10)
+
+      this._model.dataByWeek.forEach((w) => {
+        //console.log(w)
+        const b = new BarChart(
+          w.measurements,
+          this._sketch,
+          this._model.maxCases,
+          maxHeight,
+          currentX,
+          currentY
+        )
+        b.draw()
+
+        // currentY += maxHeight + yGap
+        currentX = b._x + xGap
+      })
     }
   }
 }

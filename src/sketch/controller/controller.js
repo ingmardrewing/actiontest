@@ -1,14 +1,19 @@
+import CsvReader from './csvReader'
+
 export default class Controller {
   constructor (model) {
     this._model = model
     this._view = null
   }
 
-  set view (view) {
-    this._view = view
+  init(csvData, amountOfMeasurementsToInclude) {
+    const r = new CsvReader(csvData,amountOfMeasurementsToInclude)
+    this._model.data = r.data
+    this._model.dataByWeek = r.dataByWeek
+    this._model.maxCases = r.maxCases
   }
 
-  dt () {
-    return 2
+  set view (view) {
+    this._view = view
   }
 }
