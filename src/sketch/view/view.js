@@ -1,4 +1,3 @@
-import Visualizer from './visualizer'
 import BarChart from './barchart'
 
 export default class View {
