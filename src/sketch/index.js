@@ -32,7 +32,7 @@ export default function sketch(s) {
     currentTexture.mask(mask)
 
     s.push()
-    s.texture(mask)
+    s.texture(currentTexture)
     s.plane(350)
     s.pop()
   }
