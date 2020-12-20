@@ -1,24 +1,36 @@
-export default function sketch(s) {
-  let x, y, backgroundColor;
-  let teapot;
+import Blobb from './blobb'
+import Util from './util'
 
-  const width = 500;
-  const height = 500;
+export default function sketch(s) {
+  const width = 500
+  const height = 500
+
+  let hiddenCanvas, opaqueTexture, stillMask, texture, blobb, flip = false
 
   s.preload = () => {
-    teapot = s.loadModel('./assets/chair2.obj', true);
+    opaqueTexture = s.loadImage('assets/posterPrizeForIllustration-w390.png')
   }
 
   s.setup = () => {
-    s.createCanvas(width, height, s.WEBGL);
+    s.createCanvas(width, height, s.WEBGL)
+    s.noStroke()
     s.angleMode(s.DEGREES)
-  };
+
+    blobb = new Blobb(s)
+    blobb.image = opaqueTexture
+  }
 
   s.draw = () => {
-    s.background(200);
-    s.rotateX(180);
-    s.rotateY(130);
-    s.normalMaterial(); // For effect
-    s.model(teapot);
-  };
+    s.background(204, 204, 204, 255)
+    s.fill(0,0)
+    s.rotateY(s.frameCount)
+
+    const currentTexture = Util.copyImage(opaqueTexture, s)
+    currentTexture.mask(blobb.render())
+
+    s.push()
+    s.texture(currentTexture)
+    const p = s.plane(350)
+    s.pop()
+  }
 }
