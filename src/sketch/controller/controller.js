@@ -6,8 +6,8 @@ export default class Controller {
     this._view = null
   }
 
-  init(csvData, amountOfMeasurementsToInclude) {
-    const r = new CsvReader(csvData,amountOfMeasurementsToInclude)
+  init(csvData, amountOfDaysToInclude) {
+    const r = new CsvReader(csvData,amountOfDaysToInclude)
     this._model.data = r.data
     this._model.dataByWeek = r.dataByWeek
     this._model.maxCases = r.maxCases

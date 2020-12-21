@@ -1,5 +1,5 @@
 import Week from '../model/week'
-import Measurement from '../model/measurement'
+import DataPoint from '../model/dataPoint'
 
 export default class CsvReader {
   constructor(
@@ -9,7 +9,7 @@ export default class CsvReader {
     this._csvData = csvData
     this._amountOfMeasurementsToInclude = amountOfMeasurementsToInclude
 
-    this._data = this.createMeasurementFromCSV()
+    this._data = this.createDataPointsFromCSV()
     this._dataByWeek = this.createDataByWeek()
     this._maxCases = this.findMaxCases()
   }
@@ -37,13 +37,13 @@ export default class CsvReader {
         weeks.push(currentWeek)
         currentWeek = new Week(l.weekOfYear)
       }
-      currentWeek.addMeasurement(l)
+      currentWeek.addDay(l)
     })
 
     return weeks
   }
 
-  createMeasurementFromCSV () {
+  createDataPointsFromCSV () {
     return this._csvData
       .slice(-this._amountOfMeasurementsToInclude)
       .reverse()
@@ -53,7 +53,7 @@ export default class CsvReader {
         const date = this.createDate(fields)
         const weekOfYear = this.ISO8601_week_no(date)
 
-        return new Measurement(
+        return new DataPoint(
           date,
           cases,
           weekOfYear)

@@ -34,7 +34,7 @@ export default class View {
       this._model.dataByWeek.forEach((w) => {
         //console.log(w)
         const b = new BarChart(
-          w.measurements,
+          w.days,
           this._sketch,
           this._model.maxCases,
           maxHeight,

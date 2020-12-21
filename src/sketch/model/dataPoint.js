@@ -1,4 +1,4 @@
-export default class Measurement {
+export default class DataPoint  {
   constructor(date, cases, weekOfYear) {
     this._date = date
     this._cases = cases
